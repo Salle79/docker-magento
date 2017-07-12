@@ -1,17 +1,51 @@
 version: '2'
-
+volumes:
+  data-magento: {}
+  data-log: {}
 services:
   web:
-    image: alexcheng/magento
+    container_name: web-node
+    build: .
     ports:
       - "80:80"
+    networks:
+          vpcbr:
+            ipv4_address: 10.5.0.5
+    volumes:
+      - ~/workspace/docker-magento/www:/var/www/htdocs
+    extra_hosts:
+     - "local.magento:172.19.0.4"
     links:
       - mysql
+      - redis
     env_file:
       - env
-    depends_on: 
+    depends_on:
       - mysql
+      - redis
   mysql:
-    image: mysql:5.6.23
+    container_name: mysql-node
+    image: mysql
+    networks:
+              vpcbr:
+                ipv4_address: 10.5.0.6
     env_file:
-      - env
+          - env
+    volumes:
+      - data-magento:/var/lib/mysql
+      - data-log:/var/log
+      - ./data/database.sql:/docker-entrypoint-initdb.d/init.sql
+  redis:
+    container_name: redis-node
+    image: redis:latest
+    networks:
+              vpcbr:
+                ipv4_address: 10.5.0.8
+
+networks:
+  vpcbr:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 10.5.0.0/16
+         gateway: 10.5.0.1
