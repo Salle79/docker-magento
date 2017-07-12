@@ -1,4 +1,4 @@
-# Docker image for Magento 1.x
+# Docker image for Magento 1.x with Mysql, Redis and Xdebug
 
 This repo is loosly based on Docker image for [Magento 1.x](http://magento.com/).
 
@@ -82,6 +82,7 @@ wversion: '2'
 ```
 
 To start it up, simply type `docker-compose up -d`
+
 add to host file:
 `10.5.0.5 magento.local`
 

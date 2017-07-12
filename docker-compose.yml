@@ -12,7 +12,7 @@ services:
           vpcbr:
             ipv4_address: 10.5.0.5
     volumes:
-      - ~/workspace/docker-magento/www:/var/www/htdocs
+      - ./www:/var/www/htdocs
     extra_hosts:
      - "local.magento:172.19.0.4"
     links:
