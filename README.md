@@ -12,9 +12,10 @@ This repo is loosly based on Docker image for [Magento 1.x](http://magento.com/)
 
 ### Use as standalone container
 
-Not usable for this version, please use Alex Chang's instead:
+Not usable for this version, please use Alex Chang's container instead:
 
 ```bash
+docker pull alexcheng/magento
 docker run -p 80:80 alexcheng/magento
 ```
 
