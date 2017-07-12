@@ -81,7 +81,7 @@ wversion: '2'
           gateway: 10.5.0.1
 ```
 
-To start it up, simply type `docker-compose up -d`.
+To start it up, simply type `docker-compose up -d`
 
 ## Modman
 Modman is a [Magento module manager](https://github.com/colinmollenhour/modman) that allows you to leave your work siloed from the actual Magento codebase via symlinks. With modman, you can sync plugin or theme work without keeping a persistent volume (or using a hidden volume).
