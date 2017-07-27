@@ -7,7 +7,7 @@ ENV MAGENTO_VERSION 1.9.2.4
 RUN chown -R www-data:www-data /var/www/htdocs
 
 RUN apt-get update && apt-get install -y mysql-client-5.5 libxml2-dev
-RUN docker-php-ext-install soap
+RUN docker-php-ext-install soap && docker-php-ext-install mcrypt
 
 COPY ./bin/install-magento /usr/local/bin/install-magento
 RUN chmod +x /usr/local/bin/install-magento
